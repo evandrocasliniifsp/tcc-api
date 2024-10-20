@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+export const NODE_ENV = process.env.NODE_ENV || 'development';
 export const POSTGRES_USER = process.env.POSTGRES_USER || 'postgres';
 export const POSTGRES_PASSWORD = process.env.POSTGRES_PASSWORD || 'postgres';
 export const POSTGRES_DB = process.env.POSTGRES_DB || 'api';

@@ -2,6 +2,7 @@ import { DataSource } from 'typeorm';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 import {
+  NODE_ENV,
   POSTGRES_PORT,
   POSTGRES_DB,
   POSTGRES_HOST,
@@ -20,6 +21,7 @@ export const AppDataSource = new DataSource({
   entities: ['./src/domain/entities/*.ts'],
   subscribers: [],
   migrations: ['./build/migrations/*.js'],
-  synchronize: true,
+  migrationsRun: NODE_ENV === 'production',
+  synchronize: NODE_ENV === 'development',
   namingStrategy: new SnakeNamingStrategy(),
 });
